@@ -36,11 +36,16 @@ public class UserVideo extends BaseEntity {
     private Video video;
 
     @Column(name = "progress", nullable = false)
-    private String progress;
+    private Integer progress;
+
+    @Column(name = "last_watch")
+    private Float lastWatch;
 
     @Column(name = "watched", nullable = false)
     private boolean watched;
 
-    @Column(name = "last_watched")
-    private float lastWatched;
+    public void update(int progress, float lastWatch) {
+        this.progress = progress;
+        this.lastWatch = lastWatch;
+    }
 }
