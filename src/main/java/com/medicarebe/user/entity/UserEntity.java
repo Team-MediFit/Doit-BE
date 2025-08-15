@@ -40,7 +40,7 @@ public class UserEntity extends BaseEntity {
     private String fullName;
 
     // 사용자가 한국에 오려는 이유 (자유 입력)
-    @Column(name = "reason_come_to_korea", length = 255)
+    @Column(name = "reason_come_to_korea")
     private String reasonComeToKorea;
 
     // 계획된 학업 시작 월/일 (년도 미포함)
