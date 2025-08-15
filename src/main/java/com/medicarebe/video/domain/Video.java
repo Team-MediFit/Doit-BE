@@ -19,7 +19,7 @@ public class Video extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "question_id")
+    @Column(name = "video_id")
     private Long id;
 
     @Column(name = "category", nullable = false)
