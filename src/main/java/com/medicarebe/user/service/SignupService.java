@@ -2,7 +2,7 @@ package com.medicarebe.user.service;
 
 
 import com.medicarebe.user.api.signin.SignUpRequest;
-import com.medicarebe.user.entity.User;
+import com.medicarebe.user.domain.User;
 import com.medicarebe.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;

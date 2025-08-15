@@ -1,7 +1,7 @@
 package com.medicarebe.quiz.domain;
 
 import com.medicarebe.core.BaseEntity;
-import com.medicarebe.user.entity.User;
+import com.medicarebe.user.domain.User;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

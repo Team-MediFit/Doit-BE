@@ -1,6 +1,6 @@
 package com.medicarebe.auth.security;
 
-import com.medicarebe.user.entity.User;
+import com.medicarebe.user.domain.User;
 import com.medicarebe.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationProvider;

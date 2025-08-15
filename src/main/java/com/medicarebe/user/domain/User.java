@@ -1,7 +1,6 @@
-package com.medicarebe.user.entity;
+package com.medicarebe.user.domain;
 
 import com.medicarebe.core.BaseEntity;
-import com.medicarebe.user.domain.*;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Getter;
