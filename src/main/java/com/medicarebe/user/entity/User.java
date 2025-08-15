@@ -13,16 +13,16 @@ import lombok.experimental.SuperBuilder;
 @Getter
 @SuperBuilder
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class UserEntity extends BaseEntity {
+public class User extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(unique = true, nullable = false, length = 20)
+    private String authId;
+
     @Column(unique = true, nullable = false, length = 50)
     private String username;
-
-    @Column(nullable = false, length = 50)
-    private String name;
 
     @Column(nullable = false)
     private String password;
@@ -30,11 +30,9 @@ public class UserEntity extends BaseEntity {
     @Column(nullable = false)
     private boolean agreedPolicy;
 
-    @Enumerated(EnumType.STRING)
-    @Column(nullable = false, length = 20)
-    private Role role;
 
     //선택입력
+
 
     @Column(length = 30)
     private String fullName;
@@ -51,7 +49,7 @@ public class UserEntity extends BaseEntity {
     private Integer planStudyDay;   // 1~31
 
     // 생년월일
-    @Column(name = "birth", nullable = false)
+    @Column(name = "birth")
     private java.time.LocalDate birth;
 
     // 성별
@@ -92,10 +90,17 @@ public class UserEntity extends BaseEntity {
     @Column(name = "education_level", length = 50)
     private EducationLevel educationLevel;
 
-
-    public enum Role {
-        USER,
-        ADMIN
+    public static User create(
+            String authId,
+            String username,
+            String encodedPassword,
+            boolean agreedPolicy
+    ) {
+        return User.builder()
+                .authId(authId)
+                .username(username)
+                .password(encodedPassword)
+                .agreedPolicy(agreedPolicy)
+                .build();
     }
-
 }
