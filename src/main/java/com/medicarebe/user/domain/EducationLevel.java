@@ -1,5 +1,10 @@
 package com.medicarebe.user.domain;
 
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+
+@Getter
+@RequiredArgsConstructor
 public enum EducationLevel {
     GRADUATED_HIGH_SCHOOL("Graduated from high school"),
     GRADUATED_COLLEGE_UNIVERSITY("Graduated from college/university"),
@@ -10,11 +15,4 @@ public enum EducationLevel {
 
     private final String description;
 
-    EducationLevel(String description) {
-        this.description = description;
-    }
-
-    public String getDescription() {
-        return description;
-    }
 }
