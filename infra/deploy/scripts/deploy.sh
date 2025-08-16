@@ -37,7 +37,7 @@ echo "🛑 기존 컨테이너 중지 중..."
 docker-compose down  # 기존 컨테이너 중지 및 제거
 
 echo "🐳 최신 Docker 이미지 가져오는 중..."
-docker pull jaehyukbaek/medicare-backend-app:latest
+docker pull tiemo0708/medicare-backend-app:latest
 
 echo "🔒 파일 권한 설정 중..."
 chmod 600 /home/ubuntu/.env
