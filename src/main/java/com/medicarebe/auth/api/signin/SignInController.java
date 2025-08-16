@@ -1,6 +1,8 @@
 package com.medicarebe.auth.api.signin;
 
+import com.medicarebe.auth.api.token.TokenResponse;
 import com.medicarebe.auth.service.signin.SignInService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -18,6 +20,7 @@ import java.time.Duration;
 @RequestMapping("/api/v1/auth")
 @RequiredArgsConstructor
 @Validated
+@Tag(name = "SignIn", description = "로그인 API")
 public class SignInController {
 
     private final SignInService signInService;

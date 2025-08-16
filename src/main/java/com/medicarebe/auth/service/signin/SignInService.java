@@ -1,5 +1,6 @@
 package com.medicarebe.auth.service.signin;
 
+import com.medicarebe.auth.repository.InMemoryTokenRepository;
 import com.medicarebe.auth.security.TokenProvider;
 import com.medicarebe.auth.service.SignInResult;
 import com.medicarebe.user.domain.User;
@@ -17,7 +18,9 @@ public class SignInService {
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
     private final TokenProvider tokenProvider;
+    private final InMemoryTokenRepository tokenRepository;
 
+    @Transactional
     public SignInResult signIn(String authId, String rawPassword) {
         User user = userRepository.findByAuthId(authId)
                 .orElseThrow(() -> new IllegalArgumentException("USER_NOT_FOUND"));
@@ -29,6 +32,8 @@ public class SignInService {
         // TokenProvider 규격에 맞춰 호출 (role 없이 id만 포함)
         String accessToken = tokenProvider.generateToken(user.getId());
         String refreshToken = tokenProvider.generateRefreshToken();
+
+        tokenRepository.saveRefreshToken(refreshToken, user.getId());
 
         return new SignInResult(user.getId(), accessToken, refreshToken);
     }
