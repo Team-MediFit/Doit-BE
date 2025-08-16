@@ -1,4 +1,4 @@
-package com.medicarebe.auth.api.signin;
+package com.medicarebe.auth.api.token;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Builder;
