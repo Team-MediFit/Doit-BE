@@ -37,5 +37,11 @@ public class TokenService {
         tokenRepository.remove(refreshToken);
     }
 
+    @Transactional
+    public void logoutAll(Long userId) {
+        if (userId == null) return;
+        tokenRepository.removeAllByUserId(userId);
+    }
+
     public record RefreshResult(String accessToken, String refreshToken) {}
 }
