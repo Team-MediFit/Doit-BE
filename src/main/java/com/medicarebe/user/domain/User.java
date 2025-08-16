@@ -139,4 +139,8 @@ public class User extends BaseEntity {
         if (applyCaregiverProgram != null) this.applyCaregiverProgram = applyCaregiverProgram;
         if (educationLevel != null) this.educationLevel = educationLevel;
     }
+
+    public void changePassword(String encodedPassword) {
+        this.password = encodedPassword;
+    }
 }

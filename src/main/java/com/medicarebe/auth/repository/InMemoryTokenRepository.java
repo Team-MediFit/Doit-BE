@@ -27,4 +27,8 @@ public class InMemoryTokenRepository {
     public void remove(String refreshToken) {
         TOKEN_REPOSITORY.invalidate(refreshToken);
     }
+
+    public void removeAllByUserId(Long userId) {
+        TOKEN_REPOSITORY.asMap().entrySet().removeIf(entry -> userId.equals(entry.getValue()));
+    }
 }
