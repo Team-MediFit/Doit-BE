@@ -34,22 +34,16 @@ jobs:
       - name: Copy JAR to Docker build context
         run: cp build/libs/MediCare-BE-0.0.1-SNAPSHOT.jar app.jar
 
-
       - name: Log in to Docker Hub
         uses: docker/login-action@v2
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
-      - name: Set IMAGE env
-        run: |
-          USERNAME=$(echo -n "${{ secrets.DOCKER_USERNAME }}" | tr '[:upper:]' '[:lower:]' | tr -d '[:space:]')
-          echo "IMAGE=${USERNAME}/medicare-backend-app:latest" >> $GITHUB_ENV
-
       - name: Build and Push Docker Image
         run: |
-          docker build -t "$IMAGE" .
-          docker push "$IMAGE"
+          docker build -t ${{ secrets.DOCKER_USERNAME }}/medicare-backend-app:latest .
+          docker push ${{ secrets.DOCKER_USERNAME }}/medicare-backend-app:latest
 
       - name: Upload Deploy Script to EC2
         uses: appleboy/scp-action@master
