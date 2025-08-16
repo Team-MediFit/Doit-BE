@@ -5,6 +5,7 @@ import lombok.RequiredArgsConstructor;
 
 @Getter
 @RequiredArgsConstructor
+
 public enum Purpose {
     TO_GET_JOB_AS_CAREGIVER_IN_KOREA("To get a job as a caregiver in Korea"),
     TO_FIND_OTHER_JOB_IN_KOREA("To find other job in Korea"),

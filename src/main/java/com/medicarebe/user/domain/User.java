@@ -7,6 +7,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 
+import java.time.LocalDate;
+import java.time.YearMonth;
+
 @Table(name = "user")
 @Entity
 @Getter
@@ -31,8 +34,6 @@ public class User extends BaseEntity {
 
 
     //선택입력
-
-
     @Column(length = 30)
     private String fullName;
 
@@ -40,12 +41,9 @@ public class User extends BaseEntity {
     @Column(name = "reason_come_to_korea")
     private String reasonComeToKorea;
 
-    // 계획된 학업 시작 월/일 (년도 미포함)
+    // 계획된 학업 시작 년/월 (년도 미포함)
     @Column(name = "plan_study_date")
     private java.time.YearMonth planStudyDate;
-
-    @Column(name = "plan_study_day")
-    private Integer planStudyDay;   // 1~31
 
     // 생년월일
     @Column(name = "birth")
@@ -101,5 +99,32 @@ public class User extends BaseEntity {
                 .password(encodedPassword)
                 .agreedPolicy(agreedPolicy)
                 .build();
+    }
+    public void updateDetails(
+            String fullName,
+            String reasonComeToKorea,
+            YearMonth planStudyDate,
+            LocalDate birth,
+            Gender gender,
+            String nationality,
+            PhoneNumber phoneNumber,
+            Purpose purpose,
+            TopikLevel topikLevel,
+            HeardFrom heardFrom,
+            ApplyCaregiverProgram applyCaregiverProgram,
+            EducationLevel educationLevel
+    ) {
+        if (fullName != null) this.fullName = fullName;
+        if (reasonComeToKorea != null) this.reasonComeToKorea = reasonComeToKorea;
+        if (planStudyDate != null) this.planStudyDate = planStudyDate;
+        if (birth != null) this.birth = birth;
+        if (gender != null) this.gender = gender;
+        if (nationality != null) this.nationality = nationality;
+        if (phoneNumber != null) this.phoneNumber = phoneNumber;
+        if (purpose != null) this.purpose = purpose;
+        if (topikLevel != null) this.topikLevel = topikLevel;
+        if (heardFrom != null) this.heardFrom = heardFrom;
+        if (applyCaregiverProgram != null) this.applyCaregiverProgram = applyCaregiverProgram;
+        if (educationLevel != null) this.educationLevel = educationLevel;
     }
 }
