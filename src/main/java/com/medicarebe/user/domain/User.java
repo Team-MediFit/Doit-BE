@@ -1,6 +1,8 @@
 package com.medicarebe.user.domain;
 
 import com.medicarebe.core.BaseEntity;
+import com.medicarebe.quiz.domain.UserQuiz;
+import com.medicarebe.video.domain.UserVideo;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -9,6 +11,8 @@ import lombok.experimental.SuperBuilder;
 
 import java.time.LocalDate;
 import java.time.YearMonth;
+import java.util.ArrayList;
+import java.util.List;
 
 @Table(name = "user")
 @Entity
@@ -33,7 +37,8 @@ public class User extends BaseEntity {
     private boolean agreedPolicy;
 
 
-    //선택입력
+    /*선택입력*/
+
     @Column(length = 30)
     private String fullName;
 
@@ -86,6 +91,13 @@ public class User extends BaseEntity {
     @Enumerated(EnumType.STRING)
     @Column(name = "education_level", length = 50)
     private EducationLevel educationLevel;
+
+    /*연관관계 테이블*/
+    @OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE, orphanRemoval = true)
+    private List<UserQuiz> userQuizzes = new ArrayList<>();
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE, orphanRemoval = true)
+    private List<UserVideo> userVideos = new ArrayList<>();
 
     public static User create(
             String authId,
