@@ -47,6 +47,7 @@ public class SecurityConfig {
                 .requestMatchers(
                     API_V1_PREFIX + "/users/sign-up/**",
                     API_V1_PREFIX + "/auth/sign-in",
+                    API_V1_PREFIX + "/auth/email/**",
                     API_V1_PREFIX + "/auth/token",
                     API_V1_PREFIX + "/users/password",
                     API_V1_PREFIX + "/health",
