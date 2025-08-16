@@ -20,6 +20,10 @@ public class SignupService {
 
         assertAuthIdNotDuplicate(request.authId());
 
+        if (!request.password().equals(request.confirmPassword())) {
+            throw new IllegalArgumentException("비밀번호와 비밀번호 확인이 다릅니다");
+        }
+
         String encodedPassword = passwordEncoder.encode(request.password());
         User user = User.create(
                 request.authId(),
