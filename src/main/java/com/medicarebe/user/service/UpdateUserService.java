@@ -29,7 +29,8 @@ public class UpdateUserService {
                 req.topikLevel(),
                 req.heardFrom(),
                 req.applyCaregiverProgram(),
-                req.educationLevel()
+                req.educationLevel(),
+                req.englishLevel()
         );
 
         return UserResponse.from(user); // 업데이트된 회원 정보를 응답

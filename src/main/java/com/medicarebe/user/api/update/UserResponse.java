@@ -18,7 +18,8 @@ public record UserResponse(
         TopikLevel topikLevel,
         HeardFrom heardFrom,
         ApplyCaregiverProgram applyCaregiverProgram,
-        EducationLevel educationLevel
+        EducationLevel educationLevel,
+        EnglishLevel englishLevel
 ) {
     public static UserResponse from(User user) {
         return new UserResponse(
@@ -34,7 +35,8 @@ public record UserResponse(
                 user.getTopikLevel(),
                 user.getHeardFrom(),
                 user.getApplyCaregiverProgram(),
-                user.getEducationLevel()
+                user.getEducationLevel(),
+                user.getEnglishLevel()
         );
     }
 }

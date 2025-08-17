@@ -92,6 +92,10 @@ public class User extends BaseEntity {
     @Column(name = "education_level", length = 50)
     private EducationLevel educationLevel;
 
+    @Enumerated(EnumType.STRING)
+    @Column(name = "english_level")
+    private EnglishLevel englishLevel;
+
     /*연관관계 테이블*/
     @OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE, orphanRemoval = true)
     private List<UserQuiz> userQuizzes = new ArrayList<>();
@@ -124,7 +128,8 @@ public class User extends BaseEntity {
             TopikLevel topikLevel,
             HeardFrom heardFrom,
             ApplyCaregiverProgram applyCaregiverProgram,
-            EducationLevel educationLevel
+            EducationLevel educationLevel,
+            EnglishLevel englishLevel
     ) {
         if (fullName != null) this.fullName = fullName;
         if (reasonComeToKorea != null) this.reasonComeToKorea = reasonComeToKorea;
@@ -138,6 +143,7 @@ public class User extends BaseEntity {
         if (heardFrom != null) this.heardFrom = heardFrom;
         if (applyCaregiverProgram != null) this.applyCaregiverProgram = applyCaregiverProgram;
         if (educationLevel != null) this.educationLevel = educationLevel;
+        if (englishLevel != null) this.englishLevel = englishLevel;
     }
 
     public void changePassword(String encodedPassword) {

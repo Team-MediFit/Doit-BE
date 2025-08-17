@@ -16,6 +16,8 @@ public record UpdateUserDetailsRequest(
         String nationality,
         @Schema(example = "+639171234567")
         com.medicarebe.user.domain.PhoneNumber phoneNumber,
+        @Schema(example = "BEGINNER")
+        com.medicarebe.user.domain.EnglishLevel englishLevel,
         @Schema(example = "TO_STUDY_FOR_TOPIK")
         com.medicarebe.user.domain.Purpose purpose,
         @Schema(example = "TOPIK_1")
